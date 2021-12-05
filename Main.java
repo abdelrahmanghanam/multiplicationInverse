@@ -4,32 +4,26 @@ package com.company;
 public class Main {
 
     public static void main(String[] args) {
-        System.out.println(multiply(23,12321));
-
-
-    }
-
-    public static long multiply(long a, long b){
-        long len = Long.toString(a).length();
-        if(len == 1) {
-            return a * b;
+        int test=multiplicationInverse(39,4);
+        if (test!=-1){
+            System.out.println("Multiplication inverser of 4 at base 39 is "+test );
+        }else {
+            System.out.println("No multiplication inverse found");
         }
-        long mid=len/2;
-        long power = (long) Math.pow(10, len/2);
-
-        long al = a / power;
-        long ar = a % power;
-        long bl = b / power;
-        long br = b % power;
-
-        long c2 = multiply(al, bl);
-        long c0 = multiply(ar, br);
-        long c1 = multiply(al+ar, bl+br) - c2 - c0;
 
 
-        return (long) (c2*(long) Math.pow(10, 2*(len/2)) + c1*Math.pow(10, len/2) + c0);
     }
 
+    public static int multiplicationInverse(int base, int number){
+        int result=-1;
+        for (int i=0;i<base;i++){
+            if ((i*number)%base==1){
+                result=i;
+                break;
+            }
+        }
+        return result;
+    }
 
 }
 
